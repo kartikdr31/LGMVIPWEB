@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TO DO List</title>
+	<style>
+
+body {
+		font-family: Arial, sans-serif;
+		background-image: url('ABCD.jpg'); /* background image */
+		background-size: cover;
+		background-position: center;
+	}
+	
+		
+	
+		h1 {
+			text-align: center;
+			margin-top: 20px;
+		}
+		
+		form {
+			margin-top: 20px;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		
+		input[type=text] {
+			width: 60%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+		}
+		
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+		
+		ul {
+			list-style-type: none;
+			padding: 0;
+			margin-top: 20px;
+		}
+		
+		li {
+			padding: 12px 20px;
+			background-color: #f2f2f2;
+			border-radius: 4px;
+			margin-bottom: 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		
+		li span {
+			margin-right: 10px;
+		}
+		
+		li button {
+			background-color: #f44336;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		li button:hover {
+			background-color: #e53935;
+		}
+	</style>
+</head>
+<body>
+	<h1>TO DO List</h1>
+	
+	<form>
+		<input type="text" id="task" name="task" placeholder="Enter a task...">
+		<input type="submit" value="Add Task">
+	</form>
+	
+	<ul id="task-list">
+		
+	</ul>
+	
+	<script>
+		// Add event listener to form
+		document.querySelector('form').addEventListener('submit', function(e) {
+			e.preventDefault(); // Prevent form from submitting
+			
+			// Get task input value
+			var taskInput = document.querySelector('#task');
+			var task = taskInput.value;
+			
+			// Create new list item
+			var li = document.createElement('li');
+			
+			// Add task text
+			var span = document.createElement('span');
+			span.textContent = task;
+			li.appendChild(span);
+			
+			// Add delete button
+			var button = document.createElement('button');
+			button.textContent = 'Delete';
+			button.addEventListener('click', function() {
+				li.remove(); // Remove list item when button is clicked
+			});
+			li.appendChild(button);
+			
+			// Add new list item to task list
+			var taskList = document.querySelector('#task-list');
+			taskList.appendChild(li);
+			
+			// Clear task input field
+			taskInput.value = '';
+		});
+	</script>
+</body>
+</html>
